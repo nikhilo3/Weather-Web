@@ -1,0 +1,38 @@
+.background-image {
+    overflow-y: auto;
+    position: relative;
+    background-image: url('./assets/images/bg-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 80px;
+}
+
+body:is(:hover,:focus-within)::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+
+
+.dayscontainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dayscontainer::-webkit-scrollbar-thumb {
+    border-radius: 80px;
+}
+
+.dayscontainer:is(:hover,:focus-within)::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.3);
+}
