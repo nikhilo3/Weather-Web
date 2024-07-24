@@ -13,7 +13,7 @@ function locationdate() {
     dispatch(fetchWeatherData());
   }, []);
 
-  console.log("full data=", data);
+
 
   const currentdate = () => {
     const timeZone = data.timezone;
@@ -49,6 +49,35 @@ function locationdate() {
   };
   const date = currentdate();
 
+  const chnageAddress = ()=>{
+    // Umra, Surat, GJ, India
+    // Ahemdabad Kasora, Bilari, UP, India
+
+    const address = data.resolvedAddress.split(',');
+    const local = address[0].split(' ')[0]
+    const city = address[1];
+    const state = address[2];
+    const country = address.at(-1);
+    
+    console.log(local);
+
+    if(address.length === 3){
+      console.log(`${local}, ${city}, ${state}`);
+      const newaddress = `${local}, ${city}, ${state}`
+      return newaddress;
+    }else{
+      console.log(`${local}, ${city}, ${state}, ${country}`)
+      const newaddress = `${local}, ${city}, ${state}, ${country}`
+      return newaddress;
+    }
+  //  console.log("local=",local," city=",city," state=",state," country=",country);
+  }
+  if(!data.resolvedAddress){
+
+  }else{
+    var newadress = chnageAddress();
+  }
+
   return (
     <>
       <div className="locationdate-container w-full max-w-[60%]">
@@ -63,7 +92,7 @@ function locationdate() {
             </span>
           </div>
           <div className="locationdatecontainer flex flex-col gap-1">
-            <span className="text-3xl">{data.resolvedAddress}</span>
+            <span className="text-3xl w-[250px] text-wrap">{newadress}</span>
             <div className="date">
               <span>{!data.currentConditions ? " " : date}</span>
             </div>
@@ -75,7 +104,7 @@ function locationdate() {
               <Cloud className="" style={{ height: "50px", width: "50px" }} />
             )}
           </div>
-          <span className="text-center absolute left-[9.5rem] bottom-[-2rem] text-lg">
+          <span className="text-center absolute left-[7.5rem] bottom-[-2rem] text-lg">
             {!data.currentConditions
               ? ""
               : `Cloudy - ${data.days[0].feelslikemin}°/${data.days[0].feelslikemax}°`}

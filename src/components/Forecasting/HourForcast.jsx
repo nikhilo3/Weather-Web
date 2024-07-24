@@ -2,7 +2,6 @@ import { AcUnit } from "@mui/icons-material";
 import React from "react";
 
 function HourForcast({ datas }) {
-  console.log("hours data =", datas);
 
   // Get the current hour
   const currentHour = new Date().getHours();

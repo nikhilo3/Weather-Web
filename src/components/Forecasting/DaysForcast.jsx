@@ -52,8 +52,6 @@ function DaysForcast() {
     return daysOfWeek[strtodate.getDay()];
   };
 
-  console.log("DaysForcast =", data);
-
   const fetchcurrenthour = () => {
     if (!data) {
       return "Loading...";

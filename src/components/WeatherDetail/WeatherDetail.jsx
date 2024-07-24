@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 function WeatherDetail({ data }) {
-  console.log("weather data detail =", data);
+  // console.log("weather data detail =", data);
 
   // if (!data || !data.currentConditions) {
   //   return <p>Loading...</p>;
