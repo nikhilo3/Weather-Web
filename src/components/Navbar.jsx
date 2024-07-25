@@ -5,7 +5,7 @@ import { fetchWeatherData } from "../store/slices/WeatherdataSlice";
 import styled from "styled-components";
 // import LocationDate from "./locationdatetime/LocationDate";
 
-function Navbar({ setIsCurrentLocation,isCurrentLocation }) {
+function Navbar({ setIsCurrentLocation, isCurrentLocation }) {
   const dispatch = useDispatch();
 
   const [location, setLocation] = useState("");
@@ -18,7 +18,6 @@ function Navbar({ setIsCurrentLocation,isCurrentLocation }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsCurrentLocation(false);
-
 
     if (location) {
       dispatch(fetchWeatherData(location));
@@ -61,19 +60,19 @@ function Navbar({ setIsCurrentLocation,isCurrentLocation }) {
 
   return (
     <>
-      <div className="navcontainer flex items-end justify-between p-4 px-12">
-        <div className="logo">
-          <h1 className="">Weather Forecast</h1>
-        </div>
-        <div className="searchbar w-[40%] flex relative">
+      <div className="navcontainer flex items-end justify-between md:gap-4 gap-6 lg:p-4 p-2 lg:px-12">
+
+          <h1 className="lg:text-3xl text-xl text-bold w-[80px] text-wrap">Weather Forecast</h1>
+
+        <div className="searchbar w-[50%]  m-0 p-0 flex relative">
           <form action="" className="w-full" onSubmit={handleSubmit}>
             <input
               type="text"
               name="search"
               id="search"
               placeholder="Search Location"
-              className="border-b-2 border-solid outline-none border-white w-full bg-transparent placeholder:text-gray-50"
-              value={isCurrentLocation?"Current Location":location}
+              className="border-b-2 outline-none border-white w-full bg-transparent placeholder:text-gray-50"
+              value={isCurrentLocation ? "Current Location" : location}
               onChange={handleInput}
             />
             <SearchButton className="absolute right-0" type="submit">
@@ -81,7 +80,7 @@ function Navbar({ setIsCurrentLocation,isCurrentLocation }) {
             </SearchButton>
           </form>
         </div>
-        <button className="btncurrent" onClick={handlecurrentbtn}>
+        <button className="btncurrent md:py-[0.6rem] md:px-[1.5rem] py-2 px-[0.5rem] " onClick={handlecurrentbtn}>
           Current Location
         </button>
       </div>

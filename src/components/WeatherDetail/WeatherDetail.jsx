@@ -10,7 +10,7 @@ function WeatherDetail({ data }) {
   return (
     <>
       <Wrapper>
-        <div className="weather-detail-container p-6 rounded-lg shadow-lg ml-8 mt-12">
+        <div className="weather-detail-container p-6 rounded-lg shadow-lg md:mx-8 ml-3 mt-12">
           <div className="details-grid grid grid-cols-2 gap-4">
             <div className="detail-box rounded-lg ">
               <h3 className="text-lg font-semibold mb-2">Sunrise</h3>
@@ -74,5 +74,9 @@ const Wrapper = styled.section`
     border-radius: 8px;
     padding: 9px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width:1024px){
+    width:95%;
   }
 `;

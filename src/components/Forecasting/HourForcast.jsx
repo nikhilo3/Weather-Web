@@ -32,7 +32,7 @@ function HourForcast({ datas }) {
 
   return (
     <>
-      <h1 className="font-bold text-xl mt-8">Hour forecast</h1>
+      <h1 className="font-bold text-xl mt-8 lg:text-start text-center">Hour forecast</h1>
 
       <div className="pb-[6rem]">
         {!datas
@@ -40,7 +40,7 @@ function HourForcast({ datas }) {
           : filteredHours.map((hours, index) => {
               return (
                 <div className="daycast w-full py-4" key={index}>
-                  <div className="castbox flex gap-8 w-full justify-start items-center">
+                  <div className="castbox flex md:gap-20 gap-8 w-full lg:justify-start justify-between items-center">
                     <AcUnit style={{ height: "40px", width: "40px" }} />
                     <div className="date flex flex-col ml-4">
                       <span className="text-2xl">
@@ -50,7 +50,7 @@ function HourForcast({ datas }) {
                         {hours.conditions}
                       </span>
                     </div>
-                    <span className="temp text-3xl ml-auto">{hours.temp}°</span>
+                    <span className="temp text-3xl lg:ml-auto">{hours.temp}°</span>
                   </div>
                 </div>
               );

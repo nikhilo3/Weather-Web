@@ -62,10 +62,10 @@ function locationdate({ isCurrentLocation }) {
 
   return (
     <>
-      <div className="locationdate-container w-full max-w-[60%]">
-        <div className="inner flex justify-start gap-6 items-end mt-20 relative ml-[45px]">
+      <div className="locationdate-container w-full lg:max-w-[60%] max-w-[100%]">
+        <div className="inner flex lg:justify-start justify-center mr-8 ml-8 lg:gap-8 gap-4 items-end mt-12 relative lg:ml-[45px]">
           <div className="temp">
-            <span className="text-8xl">
+            <span className="lg:text-8xl text-5xl">
               {!data.currentConditions ? (
                 <h1>Loading</h1>
               ) : (
@@ -74,10 +74,9 @@ function locationdate({ isCurrentLocation }) {
             </span>
           </div>
           <div className="locationdatecontainer flex flex-col gap-1">
-            <span className="text-3xl min-w-0 max-w-[375px] text-wrap">{newadress}</span>
-            <div className="date">
-              <span>{!data.currentConditions ? " " : date}</span>
-            </div>
+            <span className="text-3xl min-w-0 max-w-[375px] text-wrap">
+              {newadress}
+            </span>
           </div>
           <div className="iconcloud">
             {!data.currentConditions ? (
@@ -86,11 +85,17 @@ function locationdate({ isCurrentLocation }) {
               <Cloud className="" style={{ height: "50px", width: "50px" }} />
             )}
           </div>
-          <span className="text-center absolute left-[1rem] bottom-[-2rem] text-lg">
+        </div>
+
+        <div className="flex flex-col lg:justify-start lg:items-start md:justify-center items-center mr-8 ml-8 lg:ml-[45px]">
+          <div className="date mt-6 font-bold">
+           {!data.currentConditions ? " " : date}
+          </div>
+          <div className=" font-bold mt-4">
             {!data.currentConditions
               ? ""
               : `Cloudy - ${data.days[0].feelslikemin}°/${data.days[0].feelslikemax}°`}
-          </span>
+          </div>
         </div>
 
         {/* other details */}

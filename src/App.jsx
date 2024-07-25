@@ -8,7 +8,7 @@ function App() {
     <>
       <div
         className="background-image"
-        style={{ position: "relative", overflow: "overlay" }}
+        style={{ position: "relative", overflow: "hidden" }}
       >
         <Routes>
           <Route path="/Weather-Web" element={<Home />} />
