@@ -5,7 +5,7 @@ const fetchWeatherData = createAsyncThunk("fetchData", async (locations) => {
   try {
     const response = await api.get(
       `/timeline/${
-        !locations ? "surat" : locations
+        !locations ? 'Gujarat' : locations
       }?unitGroup=metric&key=${APIKEY}&contentType=json`
     );
     return response.data;

@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWeatherData } from "../../store/slices/WeatherdataSlice";
 import { Cloud } from "@mui/icons-material";
 import WeatherDetail from "../WeatherDetail/WeatherDetail";
 
-function locationdate() {
+function locationdate({ isCurrentLocation }) {
   const dispatch = useDispatch();
 
   const { data } = useSelector((state) => state.weatherdata);
@@ -12,8 +12,6 @@ function locationdate() {
   useEffect(() => {
     dispatch(fetchWeatherData());
   }, []);
-
-
 
   const currentdate = () => {
     const timeZone = data.timezone;
@@ -49,39 +47,23 @@ function locationdate() {
   };
   const date = currentdate();
 
-  const chnageAddress = ()=>{
-    // Umra, Surat, GJ, India
-    // Ahemdabad Kasora, Bilari, UP, India
-
-    const address = data.resolvedAddress.split(',');
-    const local = address[0].split(' ')[0]
-    const city = address[1];
-    const state = address[2];
-    const country = address.at(-1);
-    
-    console.log(local);
-
-    if(address.length === 3){
-      console.log(`${local}, ${city}, ${state}`);
-      const newaddress = `${local}, ${city}, ${state}`
-      return newaddress;
-    }else{
-      console.log(`${local}, ${city}, ${state}, ${country}`)
-      const newaddress = `${local}, ${city}, ${state}, ${country}`
-      return newaddress;
+  const chnageAddress = () => {
+    if (isCurrentLocation) {
+      return "Current Location";
     }
-  //  console.log("local=",local," city=",city," state=",state," country=",country);
-  }
-  if(!data.resolvedAddress){
 
-  }else{
+    const newaddress = data.resolvedAddress;
+    return newaddress;
+  };
+  if (!data.resolvedAddress) {
+  } else {
     var newadress = chnageAddress();
   }
 
   return (
     <>
       <div className="locationdate-container w-full max-w-[60%]">
-        <div className="inner flex justify-center gap-6 items-end mt-20 relative">
+        <div className="inner flex justify-start gap-6 items-end mt-20 relative ml-[45px]">
           <div className="temp">
             <span className="text-8xl">
               {!data.currentConditions ? (
@@ -92,7 +74,7 @@ function locationdate() {
             </span>
           </div>
           <div className="locationdatecontainer flex flex-col gap-1">
-            <span className="text-3xl w-[250px] text-wrap">{newadress}</span>
+            <span className="text-3xl min-w-0 max-w-[375px] text-wrap">{newadress}</span>
             <div className="date">
               <span>{!data.currentConditions ? " " : date}</span>
             </div>
@@ -104,7 +86,7 @@ function locationdate() {
               <Cloud className="" style={{ height: "50px", width: "50px" }} />
             )}
           </div>
-          <span className="text-center absolute left-[7.5rem] bottom-[-2rem] text-lg">
+          <span className="text-center absolute left-[1rem] bottom-[-2rem] text-lg">
             {!data.currentConditions
               ? ""
               : `Cloudy - ${data.days[0].feelslikemin}°/${data.days[0].feelslikemax}°`}
